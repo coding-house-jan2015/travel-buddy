@@ -15,8 +15,8 @@ angular.module('angular-prototype', ['ui.router', 'ngMessages', 'satellizer'])
     $authProvider.github({clientId:'09953be0d1b0653a75e9'});
     $authProvider.twitter({url: '/auth/twitter'});
   }])
-  .run(['$rootScope', 'User', function($rootScope, User){
-    User.status().then(function(response){
-      $rootScope.email = response.data.email;
-    });
+  .run(['$rootScope', '$window', '$auth', function($rootScope, $window, $auth){
+    if($auth.isAuthenticated()){
+      $rootScope.user = JSON.parse($window.localStorage.user);
+    }
   }]);

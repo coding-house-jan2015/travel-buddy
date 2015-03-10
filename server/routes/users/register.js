@@ -1,7 +1,7 @@
 'use strict';
 
-var User = require('../../models/user');
-var Joi = require('joi');
+let User = require('../../models/user');
+let Joi = require('joi');
 
 module.exports = {
   auth: false,
@@ -12,8 +12,11 @@ module.exports = {
     }
   },
   handler: function(request, reply){
-    User.register(request.payload, function(err){
-      reply().code(err ? 400 : 200);
+    User.register(request.payload, function(err, user){
+      if(err){return reply().code(400);}
+
+      let token = user.token();
+      reply({token:token, user:user});
     });
   }
 };
