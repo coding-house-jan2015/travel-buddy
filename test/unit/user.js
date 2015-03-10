@@ -2,6 +2,8 @@
 
 'use strict';
 
+require('babel/register');
+
 var User = require('../../server/models/user');
 var expect = require('chai').expect;
 var Lab = require('lab');
