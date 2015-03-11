@@ -1,0 +1,20 @@
+h1 Your Vacations
+
+.row
+  .col-xs-6
+    table.table.table-hover
+      thead
+        tr
+          th Title
+          th Departure
+          th Arrival
+          th Leaving
+          th Arriving
+      tbody
+        tr(ng-repeat='vacation in vacations', ng-click='show(vacation)')
+          td {{vacation.title}}
+          td {{vacation.departureDate | date: 'yyyy-MM-dd'}}
+          td {{vacation.arrivalDate | date: 'yyyy-MM-dd'}}
+          td {{vacation.departureAirport}}
+          td {{vacation.arrivalAirport}}
+  .col-xs-6

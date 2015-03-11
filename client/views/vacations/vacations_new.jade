@@ -17,11 +17,11 @@ h1 New Vacation
         .alert.alert-danger(ng-if='vacationForm.arrivalDate.$touched && vacationForm.arrivalDate.$invalid', ng-messages='vacationForm.arrivalDate.$error', ng-messages-include='/views/partials/form_validation_messages.html')
       .form-group
         label(for='departureAirport') Departure Airport
-        input.form-control(type='text', name='departureAirport', ng-model='vacation.departureAirport', required)
+        input.form-control(type='text', name='departureAirport', ng-model='vacation.departureAirport', required, ng-minlength='3', ng-maxlength='3')
         .alert.alert-danger(ng-if='vacationForm.departureAirport.$touched && vacationForm.departureAirport.$invalid', ng-messages='vacationForm.departureAirport.$error', ng-messages-include='/views/partials/form_validation_messages.html')
       .form-group
         label(for='arrivalAirport') Arrival Airport
-        input.form-control(type='text', name='arrivalAirport', ng-model='vacation.arrivalAirport', required)
+        input.form-control(type='text', name='arrivalAirport', ng-model='vacation.arrivalAirport', required, ng-minlength='3', ng-maxlength='3')
         .alert.alert-danger(ng-if='vacationForm.arrivalAirport.$touched && vacationForm.arrivalAirport.$invalid', ng-messages='vacationForm.arrivalAirport.$error', ng-messages-include='/views/partials/form_validation_messages.html')
       .form-group
         button.btn.btn-default(ng-if='vacationForm.$valid', type='submit', ng-click='submit(vacation)') Submit
