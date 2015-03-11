@@ -37,6 +37,8 @@ describe('User Model', function() {
 
     it('should NOT register a user - duplicate email', function(done) {
       User.register({email:'bob@aol.com', password:'123'}, function(err, user) {
+        console.log('err', err, 'user', user);
+
         expect(err).to.be.ok;
         expect(user).to.not.be.ok;
         done();
@@ -49,7 +51,7 @@ describe('User Model', function() {
       User.authenticate({email:'bob@aol.com', password:'123'}, function(err, user) {
         expect(err).to.not.be.ok;
         expect(user.email).to.equal('bob@aol.com');
-        expect(user.password).to.have.length(60);
+        expect(user.password).to.be.null;
         expect(user.createdAt).to.be.instanceof(Date);
         expect(user._id).to.be.ok;
         expect(user).to.be.ok;
@@ -77,6 +79,34 @@ describe('User Model', function() {
       User.authenticate({email:'wrong@aol.com', password:'wrong'}, function(err, user) {
         expect(err).to.be.ok;
         expect(user).to.not.be.ok;
+        done();
+      });
+    });
+  });
+
+  describe('.create', function() {
+    it('should create a user from social login', function(done) {
+      User.create('github', {github:1}, function(err, user){
+        expect(err).to.not.be.ok;
+        expect(user).to.be.ok;
+        done();
+      });
+    });
+
+    it('should find an existing user from social login', function(done) {
+      User.create('github', {github:3}, function(err, user){
+        expect(err).to.not.be.ok;
+        expect(user._id.toString()).to.equal('000000000000000000000001');
+        done();
+      });
+    });
+  });
+
+  describe('#token', function() {
+    it('should create a token from a user', function(done) {
+      User.create('github', {github:1}, function(err, user){
+        var token = user.token();
+        expect(token).to.have.length(172);
         done();
       });
     });
