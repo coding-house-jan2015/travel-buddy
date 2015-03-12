@@ -6,4 +6,11 @@ angular.module('angular-prototype')
     .then(response=>{
       $scope.vacation = response.data.vacation;
     });
+
+    $scope.getFlights = function(vacation){
+      Vacation.getFlights(vacation._id)
+      .then(response=>{
+        $scope.itineraries = response.data.PricedItineraries;
+      });
+    };
   }]);

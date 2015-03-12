@@ -7,14 +7,14 @@ h1 Your Vacations
         tr
           th Title
           th Departure
-          th Arrival
-          th Leaving
-          th Arriving
+          th Return
+          th Takeoff
+          th Landing
       tbody
         tr(ng-repeat='vacation in vacations', ng-click='show(vacation)')
           td {{vacation.title}}
           td {{vacation.departureDate | date: 'yyyy-MM-dd'}}
-          td {{vacation.arrivalDate | date: 'yyyy-MM-dd'}}
+          td {{vacation.returnDate | date: 'yyyy-MM-dd'}}
           td {{vacation.departureAirport}}
           td {{vacation.arrivalAirport}}
   .col-xs-6

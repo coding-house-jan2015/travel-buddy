@@ -9,7 +9,7 @@ module.exports = {
       departureAirport: Joi.string().length(3),
       arrivalAirport: Joi.string().length(3),
       departureDate: Joi.date().required(),
-      arrivalDate: Joi.date().required(),
+      returnDate: Joi.date().required(),
       title: Joi.string().required()
     }
   },

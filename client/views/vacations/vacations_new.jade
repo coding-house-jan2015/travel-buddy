@@ -12,9 +12,9 @@ h1 New Vacation
         input.form-control(type='date', name='departureDate', ng-model='vacation.departureDate', required)
         .alert.alert-danger(ng-if='vacationForm.departureDate.$touched && vacationForm.departureDate.$invalid', ng-messages='vacationForm.departureDate.$error', ng-messages-include='/views/partials/form_validation_messages.html')
       .form-group
-        label(for='arrivalDate') Arrival Date
-        input.form-control(type='date', name='arrivalDate', ng-model='vacation.arrivalDate', required)
-        .alert.alert-danger(ng-if='vacationForm.arrivalDate.$touched && vacationForm.arrivalDate.$invalid', ng-messages='vacationForm.arrivalDate.$error', ng-messages-include='/views/partials/form_validation_messages.html')
+        label(for='returnDate') Return Date
+        input.form-control(type='date', name='returnDate', ng-model='vacation.returnDate', required)
+        .alert.alert-danger(ng-if='vacationForm.returnDate.$touched && vacationForm.returnDate.$invalid', ng-messages='vacationForm.returnDate.$error', ng-messages-include='/views/partials/form_validation_messages.html')
       .form-group
         label(for='departureAirport') Departure Airport
         input.form-control(type='text', name='departureAirport', ng-model='vacation.departureAirport', required, ng-minlength='3', ng-maxlength='3')
