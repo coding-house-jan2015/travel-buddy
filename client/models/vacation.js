@@ -19,5 +19,9 @@ angular.module('angular-prototype')
       return $http.get(`/vacations/${vacationId}/flights`);
     }
 
-    return {create:create, all:all, show:show, getFlights:getFlights};
+    function purchaseFlight(vacationId, info){
+      return $http.post(`/vacations/${vacationId}/flights/purchase`, info);
+    }
+
+    return {create:create, all:all, show:show, getFlights:getFlights, purchaseFlight:purchaseFlight};
   }]);
