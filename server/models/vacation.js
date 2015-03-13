@@ -65,7 +65,7 @@ function parseItinerary(index, o){
 
 vacationSchema.methods.purchase = function(o, cb){
   stripe.charges.create({
-    amount: o.cost,
+    amount: Math.ceil(o.cost),
     currency: 'usd',
     source: o.token,
     description: o.description
