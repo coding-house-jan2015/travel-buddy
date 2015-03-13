@@ -2,6 +2,7 @@ h1 {{vacation.title}}
 
 .row
   .col-xs-6
+    h3 Vacation Information
     table.table
       thead
         tr
@@ -18,6 +19,60 @@ h1 {{vacation.title}}
           td {{vacation.departureAirport}}
           td {{vacation.arrivalAirport}}
   .col-xs-6
+
+div(ng-if='vacation.flight.charge.id')
+  .row
+    .col-xs-4
+      h3 Leaving
+      table.table
+        thead
+          tr
+            th Airline
+            th Flight
+            th Duration
+            th Departure
+            th Arrival
+        tbody
+          tr(ng-repeat='segment in vacation.flight.itinerary.leaving')
+            td {{segment.airline}}
+            td {{segment.flight}}
+            td {{segment.duration}}
+            td {{segment.departure}}
+            td {{segment.arrival}}
+    .col-xs-4
+      h3 Returning
+      table.table
+        thead
+          tr
+            th Airline
+            th Flight
+            th Duration
+            th Departure
+            th Arrival
+        tbody
+          tr(ng-repeat='segment in vacation.flight.itinerary.returning')
+            td {{segment.airline}}
+            td {{segment.flight}}
+            td {{segment.duration}}
+            td {{segment.departure}}
+            td {{segment.arrival}}
+    .col-xs-4
+
+  .row
+    .col-xs-4
+      h3 Charge Information
+      table.table
+        thead
+          tr
+            th Id
+            th Amount
+            th Date
+        tbody
+          tr
+            td {{vacation.flight.charge.id}}
+            td {{vacation.flight.charge.amount | currency}}
+            td {{vacation.flight.charge.date | date: 'yyyy-MM-dd'}}
+    .col-xs-8
 
 div(ng-if='!vacation.flight.charge.id')
   button.btn(ng-click='getFlights(vacation)') Get Flights
