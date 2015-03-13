@@ -17,6 +17,7 @@ let userSchema = mongoose.Schema({
   photoUrl: String,
   github: String,
   twitter: String,
+  phone: String,
   createdAt: {type: Date, default: Date.now, required: true}
 });
 

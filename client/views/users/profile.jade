@@ -1,0 +1,17 @@
+h1 Profile
+
+.row
+  .col-xs-4
+    form(name='userForm', novalidate)
+      .form-group
+        label(for='displayName') Display Name
+        input.form-control(type='text', name='displayName', ng-model='user.displayName', required)
+      .form-group
+        label(for='photoUrl') Photo Url
+        input.form-control(type='url', name='photoUrl', ng-model='user.photoUrl', required)
+      .form-group
+        label(for='phone') Phone
+        input.form-control(type='tel', name='phone', ng-model='user.phone', required)
+      .form-group
+        button.btn.btn-default(ng-if='userForm.$valid', type='submit', ng-click='submit(user)') Update
+  .col-xs-8
